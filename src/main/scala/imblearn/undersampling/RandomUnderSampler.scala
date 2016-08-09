@@ -1,14 +1,12 @@
 package imblearn.undersampling
 
 
+import imblearn.Sampler
 import org.apache.spark.ml.feature.LabeledPoint
 import org.apache.spark.sql.Dataset
+
 import scala.util.Random
 
-
-trait Sampler {
-  def sample(ds: Dataset[LabeledPoint], seed: Option[Long] = None): Dataset[LabeledPoint]
-}
 
 class RandomUnderSampler(fraction: Double, withReplacement: Boolean) extends Sampler {
   override def sample(ds: Dataset[LabeledPoint],
